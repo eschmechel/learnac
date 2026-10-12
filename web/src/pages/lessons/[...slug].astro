@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons');
+  return lessons.map((lesson) => ({ params: { slug: lesson.id }, props: { lesson } }));
+}
+
+const { lesson } = Astro.props;
+const { Content } = await render(lesson);
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{lesson.data.title} · learnac</title>
+  </head>
+  <body>
+    <main>
+      <h1>{lesson.data.title}</h1>
+      <Content />
+    </main>
+  </body>
+</html>
