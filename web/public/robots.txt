@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://learnac.dev/sitemap-index.xml
